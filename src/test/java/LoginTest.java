@@ -2,14 +2,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MenuItemPage;
 
-public class LoginTest extends BaseTestCase{
+public class LoginTest extends BaseTestCase {
 
     private static final String MY_ACCOUNT_PAGE_TITLE = "Moje konto";
     MenuItemPage menuItem;
+
     @Test
-    private void openMyAccountPage(){
+    private void openMyAccountPageTest() {
         menuItem = new MenuItemPage(); // TODO gdzie tworzyc obiekt? jeden globalny czy w kazdej metodzie?
-        menuItem.myAccount(driver);
+        menuItem.openMyAccountPage(driver);
 
         Assert.assertEquals(menuItem.checkPageTitle(driver), MY_ACCOUNT_PAGE_TITLE);
     }
