@@ -14,7 +14,7 @@ public class MenuItemsTest extends BaseTestCase {
 
     @BeforeTest
     private void createMenuItemPage() {
-        menuItem = new MenuItemPage();
+        menuItem = new MenuItemPage(driver);
         // TODO otwierac przed kazdym testem strone główną
     }
 
@@ -60,7 +60,8 @@ public class MenuItemsTest extends BaseTestCase {
     private void openWishListPageTest() {
         menuItem.openWishListPage(driver);
 
-        // TODO nie wychwytuje elementu - przyczyna: otwiera sie nowa strona?
+        Object[] windowHandles = driver.getWindowHandles().toArray();
+        driver.switchTo().window((String) windowHandles[1]);
         Assert.assertEquals(menuItem.checkPageTitle(driver), WISH_LIST_PAGE_TITLE);
     }
 }

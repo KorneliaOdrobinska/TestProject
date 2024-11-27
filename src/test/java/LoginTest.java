@@ -9,7 +9,7 @@ public class LoginTest extends BaseTestCase {
 
     @Test
     private void openMyAccountPageTest() {
-        menuItem = new MenuItemPage(); // TODO gdzie tworzyc obiekt? jeden globalny czy w kazdej metodzie?
+        menuItem = new MenuItemPage(driver); // TODO gdzie tworzyc obiekt? jeden globalny czy w kazdej metodzie?
         menuItem.openMyAccountPage(driver);
 
         Assert.assertEquals(menuItem.checkPageTitle(driver), MY_ACCOUNT_PAGE_TITLE);

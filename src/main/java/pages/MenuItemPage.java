@@ -2,10 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class MenuItemPage {
+public class MenuItemPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(MenuItemPage.class); // TODO nie powinien dziedziczyc loggera po BasePage?
 
-    // TODO uproscic xpatha
     private static final String XPATH_MENU_HOME = "//li[@id = 'menu-item-197']";
     private static final String XPATH_MENU_SHOP = "//li[@id = 'menu-item-198']";
     private static final String XPATH_MENU_ORDER = "//li[@id = 'menu-item-199']";
@@ -15,8 +17,15 @@ public class MenuItemPage {
     private static final String XPATH_ENTRY_TITLE = "//h1[@class = 'entry-title']";
     private static final String XPATH_SHOP_PAGE_TITLE = "//h1[@class = 'woocommerce-products-header__title page-title']";
 
+    public MenuItemPage(WebDriver driver) {
+        super(driver);
+    }
+
     private void chooseItem(WebDriver driver, String xpath) {
+        log.info("Choosing Item: " + xpath);
         driver.findElement(By.xpath(xpath)).click();
+        // TODO zrealizować czekadełko
+        //wait.withTimeout(Duration.ofSeconds(10));
     }
 
     public void openHomePage(WebDriver driver) {
