@@ -38,7 +38,7 @@ public class MenuItemsTest extends BaseTestCase {
     private void openOrderPageTest() {
         menuItem.openOrderPage(driver);
 
-        // TODO chyba nie działa bez zalogowania
+        // TODO chyba nie działa bez zalogowania - nie dziala gdy koszyk jest pusty
         Assert.assertEquals(menuItem.checkPageTitle(driver), ORDER_PAGE_TITLE);
     }
 

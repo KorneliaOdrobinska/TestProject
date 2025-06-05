@@ -33,9 +33,10 @@ public class MenuItemPage extends BasePage {
         chooseItem(driver, XPATH_MENU_HOME);
     }
 
-    public void openShopPage(WebDriver driver) {
+    public ShopPage openShopPage(WebDriver driver) {
 
         chooseItem(driver, XPATH_MENU_SHOP);
+        return new ShopPage(driver);
     }
 
     public void openOrderPage(WebDriver driver) {
