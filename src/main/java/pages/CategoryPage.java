@@ -32,11 +32,13 @@ public class CategoryPage extends BasePage {
 
     }
 
-    public void goToBasket(WebDriver driver) {
+    public BasketPage goToBasket(WebDriver driver) {
         log.info("Go to the basket");
         driver.findElement(By.xpath(XPATH_ADDED_TO_CART)).click();
         // TODO zrealizować czekadełko
         wait.withTimeout(Duration.ofSeconds(10));
+
+        return new BasketPage(driver);
     }
 
 
