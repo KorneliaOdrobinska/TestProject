@@ -39,24 +39,28 @@ public class MenuItemPage extends BasePage {
         return new ShopPage(driver);
     }
 
-    public void openOrderPage(WebDriver driver) {
+    public OrderPage openOrderPage(WebDriver driver) {
 
         chooseItem(driver, XPATH_MENU_ORDER);
+        return new OrderPage(driver);
     }
 
-    public void openBasketPage(WebDriver driver) {
+    public BasketPage openBasketPage(WebDriver driver) {
 
         chooseItem(driver, XPATH_MENU_BASKET);
+        return new BasketPage(driver);
     }
 
-    public void openMyAccountPage(WebDriver driver) {
+    public MyAccountPage openMyAccountPage(WebDriver driver) {
 
         chooseItem(driver, XPATH_MENU_MY_ACCOUNT);
+        return new MyAccountPage(driver);
     }
 
     public void openWishListPage(WebDriver driver) {
 
         chooseItem(driver, XPATH_MENU_WISH_LIST);
+        // TODO return
     }
 
     public String checkPageTitle(WebDriver driver) {
