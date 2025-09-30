@@ -2,9 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class MyAccountPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(MyAccountPage.class); // TODO nie powinien dziedziczyc loggera po BasePage?
@@ -14,6 +17,7 @@ public class MyAccountPage extends BasePage {
     private static final String ID_PASSWORD = "password";
     private static final String XPATH_MY_ACCOUNT_CONTENT = "//div[@class = 'woocommerce-MyAccount-content']";
     private static final String XPATH_ALERT = "//ul[@class = 'woocommerce-error']";
+    private static final String XPATH_MY_ACCOUNT_CONTENT_LINK = "//li[@class = 'woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link-- is-active']";
 
 
     public MyAccountPage(WebDriver driver) {
@@ -40,7 +44,14 @@ public class MyAccountPage extends BasePage {
     }
 
     public boolean checkIfUserIsLogged(WebDriver driver, String username) {
-        // TODO 0!!! czy nie trzeba dodac łapania wyjątku gdyby elementu nie było?
-        return driver.findElement(By.xpath(XPATH_MY_ACCOUNT_CONTENT)).getText().contains(username);
+        log.info("Checking if user " + username + " is logged");
+
+        List<WebElement> contentLink = driver.findElements(By.xpath(XPATH_MY_ACCOUNT_CONTENT_LINK));
+        if (contentLink.isEmpty()) {
+            return false;
+        } else {
+            contentLink.get(0).click();
+            return driver.findElement(By.xpath(XPATH_MY_ACCOUNT_CONTENT)).getText().contains(username);
+        }
     }
 }
