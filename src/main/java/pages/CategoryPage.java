@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,10 +23,8 @@ public class CategoryPage extends BasePage {
     public void addToBasket(WebDriver driver, String productName) {
         log.info("Adding : " + productName + " to the basket");
         WebElement element = driver.findElement(By.xpath(XPATH_ADD_TO_BASKET + productName + "')]"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        // TODO zrealizować czekadełko
-        wait.withTimeout(Duration.ofSeconds(10));
-        element.click();
+        // TODO 0!!! spr scrollAndClick
+        scrollAndClick(element);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(XPATH_ADDED_TO_CART)));
 
     }

@@ -2,8 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class MenuItemPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(MenuItemPage.class); // TODO nie powinien dziedziczyc loggera po BasePage?
@@ -64,13 +67,13 @@ public class MenuItemPage extends BasePage {
     }
 
     public String checkPageTitle(WebDriver driver) {
-        // TODO czy nie trzeba dodac łapania wyjątku gdyby elementu nie było?
-        return driver.findElement(By.xpath(XPATH_ENTRY_TITLE)).getText();
+        List<WebElement> entryTitle = driver.findElements(By.xpath(XPATH_ENTRY_TITLE));
+        return !entryTitle.isEmpty() ? entryTitle.get(0).getText() : "";
     }
 
     public boolean checkIfShopPageIsOpened(WebDriver driver) {
-        // TODO czy nie trzeba dodac łapania wyjątku gdyby elementu nie było?
-        return driver.findElement(By.xpath(XPATH_SHOP_PAGE_TITLE)).getText().equals("Sklep");
+        List<WebElement> shopTitle = driver.findElements(By.xpath(XPATH_SHOP_PAGE_TITLE));
+        return !shopTitle.isEmpty() ? shopTitle.get(0).getText().equals("Sklep") : false;
     }
 
 }

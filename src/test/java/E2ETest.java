@@ -19,19 +19,18 @@ public class E2ETest extends BaseTestCase {
         basketPage = categoryPage.goToBasket(driver);
         orderPage = basketPage.goToPayment(driver);
 
-        // TODO czy wszedzie trzeb podawac driver?
+        // TODO 0!!! sprobowac usunac driver z metod -- czy wszedzie trzeb podawac driver?
         orderPage.setFirstName(driver, "Kornelia");
         orderPage.setLastName(driver, "xxx");
         orderPage.setAddress(driver, "Alternatywy 4");
         orderPage.setPostcode(driver, "56-099");
-        orderPage.setCity(driver,"Radom");
-        orderPage.setPhone(driver,"666-666-666");
-        orderPage.setEmail(driver,"xxx@wp.pl");
+        orderPage.setCity(driver, "Radom");
+        orderPage.setPhone(driver, "666-666-666");
+        orderPage.setEmail(driver, "xxx@wp.pl");
 
         orderPage.setCardNumber(driver, "4242424242424242");
         orderPage.setExpiryDate(driver, "12/12");
-        orderPage.setCvcCode(driver,"666");
-
+        orderPage.setCvcCode(driver, "666");
 
 
     }

@@ -1,13 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.time.Duration;
 
 public class BasketPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(BasketPage.class); // TODO 1!!! nie powinien dziedziczyc loggera po BasePage?
@@ -19,14 +16,12 @@ public class BasketPage extends BasePage {
         super(driver);
     }
 
-    public OrderPage goToPayment(WebDriver driver){
+    public OrderPage goToPayment(WebDriver driver) {
         log.info("Going to Payment");
-        // TODO 0!!! wycignac do metody
         WebElement element = driver.findElement(By.xpath(XPATH_CHECKOUT_BUTTON));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        // TODO zrealizować czekadełko
-        wait.withTimeout(Duration.ofSeconds(10));
-        element.click();
+        // TODO 0!!! sprawdzic czy dziala
+        //  TODO 0!!! czy nie trzeba przekazywac drivera
+        scrollAndClick(element);
 
         return new OrderPage(driver);
     }
