@@ -33,7 +33,6 @@ public class BasePage {
     public void scrollAndClick(WebElement element) {
         log.info("Scrolling to element and clicking");
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        // TODO 0!!! sprawdzic czy wait.until dziala
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }

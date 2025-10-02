@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 public class MyAccountPage extends BasePage {
-    private static final Logger log = LoggerFactory.getLogger(MyAccountPage.class); // TODO nie powinien dziedziczyc loggera po BasePage?
+    private static final Logger log = LoggerFactory.getLogger(MyAccountPage.class);
 
     private static final String XPATH_LOGIN_BUTTON = "//button[contains(@name,'login')]";
     private static final String XPATH_EMAIL = "//input[@name = 'username']";
@@ -24,17 +24,17 @@ public class MyAccountPage extends BasePage {
         super(driver);
     }
 
-    public void setEmail(WebDriver driver, String email) {
+    public void setEmail(String email) {
         log.info("Setting email: " + email);
         driver.findElement(By.xpath(XPATH_EMAIL)).sendKeys(email);
     }
 
-    public void setPassword(WebDriver driver, String password) {
+    public void setPassword(String password) {
         log.info("Setting address: " + password);
         driver.findElement(By.id(ID_PASSWORD)).sendKeys(password);
     }
 
-    public void clickLogIn(WebDriver driver) {
+    public void clickLogIn() {
         log.info("Clicking LogIn button");
         driver.findElement(By.xpath(XPATH_LOGIN_BUTTON)).click();
         wait.until(ExpectedConditions.or(
@@ -43,7 +43,7 @@ public class MyAccountPage extends BasePage {
         ));
     }
 
-    public boolean checkIfUserIsLogged(WebDriver driver, String username) {
+    public boolean checkIfUserIsLogged(String username) {
         log.info("Checking if user " + username + " is logged");
 
         List<WebElement> contentLink = driver.findElements(By.xpath(XPATH_MY_ACCOUNT_CONTENT_LINK));

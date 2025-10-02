@@ -15,22 +15,21 @@ public class E2ETest extends BaseTestCase {
         menuItem = new MenuItemPage(driver);
         shopPage = menuItem.openShopPage(driver);
         categoryPage = shopPage.chooseCategory(driver, CATEGORY_NAME);
-        categoryPage.addToBasket(driver, "Grań Kościelców");
+        categoryPage.addToBasket("Grań Kościelców");
         basketPage = categoryPage.goToBasket(driver);
         orderPage = basketPage.goToPayment(driver);
 
-        // TODO 0!!! sprobowac usunac driver z metod -- czy wszedzie trzeb podawac driver?
-        orderPage.setFirstName(driver, "Kornelia");
-        orderPage.setLastName(driver, "xxx");
-        orderPage.setAddress(driver, "Alternatywy 4");
-        orderPage.setPostcode(driver, "56-099");
-        orderPage.setCity(driver, "Radom");
-        orderPage.setPhone(driver, "666-666-666");
-        orderPage.setEmail(driver, "xxx@wp.pl");
+        orderPage.setFirstName("Kornelia");
+        orderPage.setLastName("xxx");
+        orderPage.setAddress("Alternatywy 4");
+        orderPage.setPostcode("56-099");
+        orderPage.setCity("Radom");
+        orderPage.setPhone("666-666-666");
+        orderPage.setEmail("xxx@wp.pl");
 
-        orderPage.setCardNumber(driver, "4242424242424242");
-        orderPage.setExpiryDate(driver, "12/12");
-        orderPage.setCvcCode(driver, "666");
+        orderPage.setCardNumber("4242424242424242");
+        orderPage.setExpiryDate("12/12");
+        orderPage.setCvcCode("666");
 
 
     }

@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 public class MenuItemPage extends BasePage {
-    private static final Logger log = LoggerFactory.getLogger(MenuItemPage.class); // TODO nie powinien dziedziczyc loggera po BasePage?
+    private static final Logger log = LoggerFactory.getLogger(MenuItemPage.class);
 
     private static final String XPATH_MENU_HOME = "//li[@id = 'menu-item-197']";
     private static final String XPATH_MENU_SHOP = "//li[@id = 'menu-item-198']";
@@ -66,12 +66,12 @@ public class MenuItemPage extends BasePage {
         // TODO return
     }
 
-    public String checkPageTitle(WebDriver driver) {
+    public String checkPageTitle() {
         List<WebElement> entryTitle = driver.findElements(By.xpath(XPATH_ENTRY_TITLE));
         return !entryTitle.isEmpty() ? entryTitle.get(0).getText() : "";
     }
 
-    public boolean checkIfShopPageIsOpened(WebDriver driver) {
+    public boolean checkIfShopPageIsOpened() {
         List<WebElement> shopTitle = driver.findElements(By.xpath(XPATH_SHOP_PAGE_TITLE));
         return !shopTitle.isEmpty() ? shopTitle.get(0).getText().equals("Sklep") : false;
     }

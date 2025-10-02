@@ -11,18 +11,18 @@ public class LoginTest extends BaseTestCase {
 
     @Test(priority = 0)
     private void openMyAccountPageTest() {
-        menuItem = new MenuItemPage(driver); // TODO 1!!! gdzie tworzyc obiekt? jeden globalny czy w kazdej metodzie?
+        menuItem = new MenuItemPage(driver);
         myAccountPage = menuItem.openMyAccountPage(driver);
 
-        Assert.assertEquals(menuItem.checkPageTitle(driver), MY_ACCOUNT_PAGE_TITLE);
+        Assert.assertEquals(menuItem.checkPageTitle(), MY_ACCOUNT_PAGE_TITLE);
     }
 
     @Test(priority = 1)
     private void logInTest() {
-        myAccountPage.setEmail(driver, "kornelia.fabian92@gmail.com");
-        myAccountPage.setPassword(driver, "Automaty1234!");
-        myAccountPage.clickLogIn(driver);
+        myAccountPage.setEmail("kornelia.fabian92@gmail.com");
+        myAccountPage.setPassword("Automaty1234!");
+        myAccountPage.clickLogIn();
 
-        Assert.assertTrue(myAccountPage.checkIfUserIsLogged(driver, "kornelia.fabian92"));
+        Assert.assertTrue(myAccountPage.checkIfUserIsLogged("kornelia.fabian92"));
     }
 }

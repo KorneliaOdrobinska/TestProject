@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BasketPage extends BasePage {
-    private static final Logger log = LoggerFactory.getLogger(BasketPage.class); // TODO 1!!! nie powinien dziedziczyc loggera po BasePage?
+    private static final Logger log = LoggerFactory.getLogger(BasketPage.class);
 
     private static final String XPATH_CHECKOUT_BUTTON = "//a[contains(@class,'checkout-button')]";
 
@@ -19,8 +19,6 @@ public class BasketPage extends BasePage {
     public OrderPage goToPayment(WebDriver driver) {
         log.info("Going to Payment");
         WebElement element = driver.findElement(By.xpath(XPATH_CHECKOUT_BUTTON));
-        // TODO 0!!! sprawdzic czy dziala
-        //  TODO 0!!! czy nie trzeba przekazywac drivera
         scrollAndClick(element);
 
         return new OrderPage(driver);

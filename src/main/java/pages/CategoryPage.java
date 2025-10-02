@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.time.Duration;
 
 public class CategoryPage extends BasePage {
-    private static final Logger log = LoggerFactory.getLogger(CategoryPage.class); // TODO nie powinien dziedziczyc loggera po BasePage?
+    private static final Logger log = LoggerFactory.getLogger(CategoryPage.class);
 
     private static final String XPATH_ADD_TO_BASKET = "//a[text() = 'Dodaj do koszyka'][contains(@aria-label, '";
     private static final String XPATH_ADDED_TO_CART = "//a[contains(@class, 'added_to_cart')]";
@@ -20,10 +20,9 @@ public class CategoryPage extends BasePage {
         super(driver);
     }
 
-    public void addToBasket(WebDriver driver, String productName) {
+    public void addToBasket(String productName) {
         log.info("Adding : " + productName + " to the basket");
         WebElement element = driver.findElement(By.xpath(XPATH_ADD_TO_BASKET + productName + "')]"));
-        // TODO 0!!! spr scrollAndClick
         scrollAndClick(element);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(XPATH_ADDED_TO_CART)));
 
