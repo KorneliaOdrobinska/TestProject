@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class BasePage {
     protected final WebDriver driver;
-    protected final WebDriverWait wait; // TODO dorobic oczekiwanie na element
+    protected final WebDriverWait wait; // TODO dorobic globalne oczekiwanie na element?
     protected static final Logger log = LoggerFactory.getLogger(BasePage.class);
 
     public BasePage(WebDriver driver) {

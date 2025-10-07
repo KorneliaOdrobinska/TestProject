@@ -3,11 +3,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MenuItemPage;
 
+import static pages.GLOBAL_VALUES.PAGE_TITLE_BASKET;
+
 public class MenuItemsTest extends BaseTestCase {
 
     private static final String HOME_PAGE_TITLE = "Wybierz podróż dla siebie!";
     private static final String ORDER_PAGE_TITLE = "Zamówienie";
-    private static final String BASKET_PAGE_TITLE = "Koszyk";
     private static final String MY_ACCOUNT_PAGE_TITLE = "Moje konto";
     private static final String WISH_LIST_PAGE_TITLE = "Lista życzeń";
     MenuItemPage menuItem;
@@ -46,7 +47,7 @@ public class MenuItemsTest extends BaseTestCase {
     private void openBasketPageTest() {
         menuItem.openBasketPage(driver);
 
-        Assert.assertEquals(menuItem.checkPageTitle(), BASKET_PAGE_TITLE);
+        Assert.assertEquals(menuItem.checkPageTitle(), PAGE_TITLE_BASKET);
     }
 
     @Test(priority = 4)

@@ -7,7 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
+import static pages.GLOBAL_VALUES.PAGE_TITLE_BASKET;
+import static pages.GLOBAL_VALUES.XPATH_ENTRY_TITLE;
 
 public class CategoryPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(CategoryPage.class);
@@ -31,11 +32,9 @@ public class CategoryPage extends BasePage {
     public BasketPage goToBasket(WebDriver driver) {
         log.info("Go to the basket");
         driver.findElement(By.xpath(XPATH_ADDED_TO_CART)).click();
-        // TODO zrealizować czekadełko
-        wait.withTimeout(Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBe(By.xpath(XPATH_ENTRY_TITLE), PAGE_TITLE_BASKET));
 
         return new BasketPage(driver);
     }
-
 
 }

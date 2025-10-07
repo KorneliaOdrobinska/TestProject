@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+import static pages.GLOBAL_VALUES.XPATH_ENTRY_TITLE;
+import static pages.GLOBAL_VALUES.XPATH_SHOP_PAGE_TITLE;
+
 public class MenuItemPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(MenuItemPage.class);
 
@@ -17,8 +20,6 @@ public class MenuItemPage extends BasePage {
     private static final String XPATH_MENU_BASKET = "//li[@id = 'menu-item-200']";
     private static final String XPATH_MENU_MY_ACCOUNT = "//li[@id = 'menu-item-201']";
     private static final String XPATH_MENU_WISH_LIST = "//li[@id = 'menu-item-248']";
-    private static final String XPATH_ENTRY_TITLE = "//h1[@class = 'entry-title']";
-    private static final String XPATH_SHOP_PAGE_TITLE = "//h1[@class = 'woocommerce-products-header__title page-title']";
 
     public MenuItemPage(WebDriver driver) {
         super(driver);

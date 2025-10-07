@@ -2,10 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
+import static pages.GLOBAL_VALUES.XPATH_SHOP_PAGE_TITLE;
 
 public class ShopPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(ShopPage.class);
@@ -20,8 +21,7 @@ public class ShopPage extends BasePage {
     public CategoryPage chooseCategory(WebDriver driver, String categoryName) {
         log.info("Choosing Category: " + categoryName);
         driver.findElement(By.xpath(XPATH_CATEGORY + categoryName + "']")).click();
-        // TODO zrealizować czekadełko
-        wait.withTimeout(Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBe(By.xpath(XPATH_SHOP_PAGE_TITLE), categoryName));
 
         return new CategoryPage(driver);
     }
